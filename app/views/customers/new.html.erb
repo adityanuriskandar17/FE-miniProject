@@ -1,0 +1,23 @@
+<%= form_with url: customers_path, method: :post, local: true do |form| %>
+  <div class="mb-3">
+    <label for="customerName" class="form-label">Name</label>
+    <%= form.text_field :name, class: 'form-control', id: 'customerName', value: @customer['name'] %>
+  </div>
+
+  <div class="mb-3">
+    <label for="customerAddress" class="form-label">Address</label>
+    <%= form.text_field :address, class: 'form-control', id: 'customerAddress', value: @customer['address'] %>
+  </div>
+
+  <div class="mb-3">
+    <label for="customerDob" class="form-label">Date of Birth</label>
+    <%= form.date_field :dob, class: 'form-control', id: 'customerDob', value: @customer['dob'] %>
+  </div>
+
+  <div class="mb-3">
+    <label for="customerPhone" class="form-label">Phone</label>
+    <%= form.text_field :phone, class: 'form-control', id: 'customerPhone', value: @customer['phone'] %>
+  </div>
+
+  <%= form.submit 'Create Customer', class: 'btn btn-primary' %>
+<% end %>

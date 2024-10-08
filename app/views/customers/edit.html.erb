@@ -1,0 +1,27 @@
+<% if @customer.present? %>
+  <%= form_with url: customer_path(@customer['_id']), method: :patch, local: true do |form| %>
+    <div class="mb-3">
+      <label for="customerName" class="form-label">Name</label>
+      <input type="text" class="form-control" id="customerName" name="customer[name]" value="<%= @customer['name'] %>">
+    </div>
+
+    <div class="mb-3">
+      <label for="customerAddress" class="form-label">Address</label>
+      <input type="text" class="form-control" id="customerAddress" name="customer[address]" value="<%= @customer['address'] %>">
+    </div>
+
+    <div class="mb-3">
+      <label for="customerPhone" class="form-label">Phone</label>
+      <input type="text" class="form-control" id="customerPhone" name="customer[phone]" value="<%= @customer['phone'] %>">
+    </div>
+
+    <div class="mb-3">
+      <label for="customerDob" class="form-label">Date of Birth</label>
+      <input type="date" class="form-control" id="customerDob" name="customer[dob]" value="<%= @customer['dob'] %>">
+    </div>
+
+    <%= form.submit 'Update Customer', class: 'btn btn-primary' %>
+  <% end %>
+<% else %>
+  <p>Customer data not found.</p>
+<% end %>

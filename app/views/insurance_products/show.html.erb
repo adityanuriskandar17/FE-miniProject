@@ -1,0 +1,6 @@
+<% if @insurance_product.present? %>
+  <h1><%= @insurance_product['name'] %></h1>
+  <p>ID: <%= @insurance_product['id'] %></p>
+<% else %>
+  <p>Insurance product not found.</p>
+<% end %>

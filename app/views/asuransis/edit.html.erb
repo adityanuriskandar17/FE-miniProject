@@ -1,0 +1,59 @@
+<% if flash[:error] %>
+  <div class="alert alert-danger"><%= flash[:error] %></div>
+<% end %>
+
+<% if flash[:warning] %>
+  <div class="alert alert-warning"><%= flash[:warning] %></div>
+<% end %>
+
+<% if flash[:success] %>
+  <div class="alert alert-success"><%= flash[:success] %></div>
+<% end %>
+
+<h1>Edit Asuransi</h1>
+
+<div class="alert alert-info">
+  <strong>Note:</strong> Only one active insurance is allowed per customer. If you're creating a new active insurance, make sure the customer doesn't already have an active one.
+</div>
+
+<%= form_with url: asuransi_path(@asuransi['id']), method: :patch, local: true do |form| %>
+  <div class="form-group">
+    <label for="asuransiStatus" class="form-label">Status</label>
+    <%= form.text_field :status, class: 'form-control', id: 'asuransiStatus', value: @asuransi['status'] %>
+  </div>
+
+  <div class="mb-3">
+    <label for="asuransiActiveDate" class="form-label">Active Date</label>
+    <%= form.date_field :active_date, class: 'form-control', id: 'asuransiActiveDate', value: @asuransi['active_date'] %>
+  </div>
+
+  <div class="mb-3">
+    <label for="asuransiExpireDate" class="form-label">Expire Date</label>
+    <%= form.date_field :expire_date, class: 'form-control', id: 'asuransiExpireDate', value: @asuransi['expire_date'] %>
+  </div>
+
+  <div class="form-group">
+  <%= form.label :customer_id %>
+  <% if @customers.present? && @customers.is_a?(Array) %>
+    <%= form.select :customer_id, @customers.map { |c| [c["name"], c["_id"]] }, { prompt: "Select a customer", selected: @asuransi['customer_id'] }, class: 'form-control' %>
+  <% else %>
+    <p>No customers available</p>
+  <% end %>
+</div>
+
+<div class="form-group">
+  <%= form.label :insurance_product_id %>
+  <% if @insurance_products.present? && @insurance_products.is_a?(Array) %>
+    <%= form.select :insurance_product_id, @insurance_products.map { |p| [p["name"], p["id"]] }, { prompt: "Select an insurance product", selected: @asuransi['insurance_product_id'] }, class: 'form-control' %>
+  <% else %>
+    <p>No insurance products available</p>
+  <% end %>
+</div>
+
+
+  <div class="form-group">
+    <%= form.submit 'Update Asuransi', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', asuransis_path, class: 'btn btn-secondary' %>

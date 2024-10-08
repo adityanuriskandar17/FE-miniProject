@@ -1,0 +1,57 @@
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2>Asuransi List</h2>
+  <%= link_to "New Asuransi", new_asuransi_path, class: 'btn btn-success'%>
+</div>
+
+<% if @asuransis.any? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Status</th>
+        <th scope="col">Active Date</th>
+        <th scope="col">Expire Date</th>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Insurance Product Name</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @asuransis.each_with_index do |asuransi, index|%>
+      <tr>
+        <th scope="row"><%= index + 1 %></th>
+        <td><%= asuransi['status'] %></td>
+        <td><%= asuransi['active_date'] %></td>
+        <td><%= asuransi['expire_date'] %></td>
+        <td><%= asuransi['customer_name'] %></td>
+        <td><%= asuransi['insurance_product_name'] %></td>
+
+        <td>
+          <% if asuransi['id'].present? %>
+            <%= link_to 'Edit', edit_asuransi_path(asuransi['id']), class: 'btn btn-primary btn-sm' %>
+            <%= form_with url: asuransi_path(asuransi['id']), method: :delete, local: true, class: 'd-inline' do |form| %>
+              <%= form.submit 'Delete', class: 'btn btn-danger btn-sm', data: { confirm: "Are you sure you want to delete this asuransi?" } %>
+            <% end %>
+          <% else %>
+            <span>No actions available</span>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+  </tbody>
+  </table>
+<% else %>
+  <p>No Asuransis Found.</p>
+<% end %>
+
+<% if flash[:error] %>
+  <div class="alert alert-danger"><%= flash[:error] %></div>
+<% end %>
+
+<% if flash[:warning] %>
+  <div class="alert alert-warning"><%= flash[:warning] %></div>
+<% end %>
+
+<% if flash[:success] %>
+  <div class="alert alert-success"><%= flash[:success] %></div>
+<% end %>

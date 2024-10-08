@@ -1,0 +1,23 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="w-50 p-3 border rounded shadow">
+    <h2 class="text-center mb-4">Login</h2>
+
+    <%= form_with url: sessions_path, method: :post, local: true do |form| %>
+      <div class="mb-3">
+        <%= form.label :email, "Email address", class: "form-label" %>
+        <%= form.email_field :email, class: "form-control", id: "exampleInputEmail1", 'aria-describedby': "emailHelp", required: true %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :password, "Password", class: "form-label" %>
+        <%= form.password_field :password, class: "form-control", id: "exampleInputPassword1", required: true %>
+      </div>
+
+      <div class="d-grid">
+        <%= form.submit "Submit", class: "btn btn-primary btn-block" %>
+      </div>
+    <% end %>
+
+    <%= flash[:error] if flash[:error].present? %>
+  </div>
+</div>

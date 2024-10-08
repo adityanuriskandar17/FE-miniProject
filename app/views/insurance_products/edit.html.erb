@@ -1,0 +1,8 @@
+<%= form_with url: insurance_product_path(@insurance_product['id']), method: :patch, local: true do |form| %>
+  <div class="mb-3">
+    <label for="insuranceProductName" class="form-label">Name</label>
+    <%= form.text_field :name, class: 'form-control', id: 'insuranceProductName', value: @insurance_product['name'] %>
+  </div>
+
+  <%= form.submit 'Update Insurance Product', class: 'btn btn-primary' %>
+<% end %>

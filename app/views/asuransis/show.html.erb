@@ -1,0 +1,34 @@
+<h1>Asuransi Details</h1>
+
+<p>
+  <strong>Status:</strong>
+  <%= @asuransi['status'] %>
+</p>
+
+<p>
+  <strong>Active Date:</strong>
+  <%= @asuransi['active_date'] %>
+</p>
+
+<p>
+  <strong>Expire Date:</strong>
+  <%= @asuransi['expire_date'] %>
+</p>
+
+<p>
+  <strong>User ID:</strong>
+  <%= @asuransi['user_id'] %>
+</p>
+
+<p>
+  <strong>Customer ID:</strong>
+  <%= @asuransi['customer_id'] %>
+</p>
+
+<p>
+  <strong>Insurance Product ID:</strong>
+  <%= @asuransi['insurance_product_id'] %>
+</p>
+
+<%= link_to 'Edit', edit_asuransi_path(@asuransi['id']) %> |
+<%= link_to 'Back', asuransis_path %>

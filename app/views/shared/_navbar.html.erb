@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+            <%= link_to "Home", root_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Customer", customers_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Insurance Product", insurance_products_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%= link_to "Insurance", asuransis_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item">
+            <%= link_to 'Logout', logout_path, method: :delete, class: 'nav-link btn btn-danger' %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
